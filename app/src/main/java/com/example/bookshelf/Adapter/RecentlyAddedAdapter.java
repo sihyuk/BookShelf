@@ -23,11 +23,12 @@ public class RecentlyAddedAdapter extends RecyclerView.Adapter<RecentlyAddedAdap
     private String title;
     private int synopsis;
     private  String author;
-    private RecyclerViewAdapter.OnMyItemClickListner listener;
+    private OnMyItemClickListner2 listener;
 
-    public RecentlyAddedAdapter(Context context,List<ModelItem> modelItems){
+    public RecentlyAddedAdapter(Context context,List<ModelItem> modelItems, OnMyItemClickListner2 listener){
         this.context = context;
         this.modelItems = modelItems;
+        this.listener = listener;
     }
     @NonNull
     @Override
@@ -48,7 +49,7 @@ public class RecentlyAddedAdapter extends RecyclerView.Adapter<RecentlyAddedAdap
 
             @Override
             public void onClick(View view) {
-                listener.setOnItemClickListener(modelItem, position);
+                listener.setOnItemClickListener2(modelItem, position);
             }
         });
     }
@@ -76,8 +77,8 @@ public class RecentlyAddedAdapter extends RecyclerView.Adapter<RecentlyAddedAdap
         }
 
     }
-    public interface OnMyItemClickListner {
+    public interface OnMyItemClickListner2 {
 
-        void setOnItemClickListener(ModelItem modelItem, int position);
+        void setOnItemClickListener2(ModelItem modelItem, int position);
     }
 }
