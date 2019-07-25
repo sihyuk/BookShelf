@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewAdapter.OnMyItemClickListner,RecentlyAddedAdapter.OnMyItemClickListner2 {
 
     SliderView sliderView;
+    SharedPreferenceconfig sharedPreferenceconfig;
 
 
     @Override
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("BookShelf");
         setSupportActionBar(toolbar);
+
+        sharedPreferenceconfig = new SharedPreferenceconfig(getApplicationContext());
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -189,6 +193,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_feedback) {
 
+        }else if(id == R.id.nav_logout){
+            sharedPreferenceconfig.WriteLoginStatus(false);
+            startActivity(new Intent(this,LoginActivity.class));
+           // Toast.makeText(this,"Logout Succesful",Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
