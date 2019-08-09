@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.example.bookshelf.Adapter.GalleryAdapter;
 import com.example.bookshelf.Adapter.RecentlyAddedAdapter;
 import com.example.bookshelf.Adapter.RecyclerViewAdapter;
 import com.example.bookshelf.Adapter.SliderAdapter;
@@ -22,6 +23,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
+
     private List<ModelItem> getdata() {
         List<ModelItem> modelItems = new ArrayList<ModelItem>();
         modelItems.add(new ModelItem(R.drawable.angels_and_demon, "Angels and Demon","Dan Brown", R.string.angels_and_demon));
@@ -120,7 +123,7 @@ public class MainActivity extends AppCompatActivity
 
         return modelItems;
     }
-    private List<ModelItem> getdata2() {
+    public List<ModelItem> getdata2() {
         List<ModelItem> modelItems = new ArrayList<ModelItem>();
         modelItems.add(new ModelItem(R.drawable.angels_and_demon, "Angels and Demon","Dan Brown", R.string.angels_and_demon));
         modelItems.add(new ModelItem(R.drawable.game_of_thrones, "Game of Thrones","George R.R. Martin", R.string.game_of_thrones));
@@ -186,7 +189,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            startActivity(new Intent(this, GalleryDetailActivity.class));
+            finish();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_setting) {
@@ -217,4 +221,5 @@ public class MainActivity extends AppCompatActivity
 //        intent.putExtra("model", modelItem);
         startActivity(SecondDetailActivity.getIntent(this,modelItem));
     }
+
 }
